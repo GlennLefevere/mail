@@ -1,9 +1,9 @@
 package be.vdab.enums;
 
-public enum mailServers {
+public enum MailServers {
 	GMAIL("imap.gmail.com"), HOTMAIL("pop-mail.outlook.com");
-	private String value;
-	private mailServers(String value){
+	private final String value;
+	private MailServers(String value){
 		this.value = value;
 	}
 	
