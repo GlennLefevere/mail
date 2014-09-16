@@ -6,6 +6,7 @@ import javax.mail.BodyPart;
 import javax.mail.Multipart;
 import javax.mail.internet.MimeMessage;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -94,10 +95,10 @@ public class Application {
 	}
 	
 	@Bean
-	ImapMailReceiver receiver() {
-		String tweedeacount = "glenn.lefevere.spring";
+	@Value("${tweedeaccount}")
+	ImapMailReceiver receiver(String tweedeaccount) {
 		MailAccount account = new MailAccount();
-		account.setUsername(tweedeacount);
+		account.setUsername(tweedeaccount);
 		String temp = "imaps://" + account.getUsername() + ":" + account.getPassword() + "@" + MailServers.GMAIL + ":993/INBOX";
 		ImapMailReceiver receiver = new ImapMailReceiver(temp);
 		return receiver;
