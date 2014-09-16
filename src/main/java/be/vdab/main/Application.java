@@ -48,18 +48,6 @@ public class Application {
 					MimeMessage mimeMessage = (MimeMessage) message.getPayload();
 					try {
 						Multipart multipart = (Multipart) mimeMessage.getContent();
-						/*
-						 * List<String> headers = new ArrayList<>();
-						 * headers.addAll
-						 * (Arrays.asList(mimeMessage.getHeader("to")));
-						 * headers.
-						 * addAll(Arrays.asList(mimeMessage.getHeader("from")));
-						 * headers
-						 * .addAll(Arrays.asList(mimeMessage.getHeader("subject"
-						 * ))); for (String header : headers) {
-						 * System.out.println(header); }
-						 * System.out.println(bodyPart.getContent());
-						 */
 						BodyPart bodyPart = multipart.getBodyPart(0);
 						email.setOntvanger(mimeMessage.getHeader("to")[0]);
 						email.setZender(mimeMessage.getHeader("from")[0]);
